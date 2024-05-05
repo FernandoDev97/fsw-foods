@@ -6,8 +6,24 @@ import { CategoryList } from './_components/category-list'
 import { Header } from './_components/header'
 import { ProductList } from './_components/product-list'
 import { Search } from './_components/search'
+import { prismaClient } from './_lib/prisma'
 
-export default function Home() {
+export default async function Home() {
+  const products = await prismaClient.product.findMany({
+    where: {
+      discountPercentage: {
+        gt: 0,
+      },
+    },
+    take: 10,
+    include: {
+      restaurant: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  })
   return (
     <div>
       <Header />
@@ -39,7 +55,7 @@ export default function Home() {
             Ver todos <ChevronRight size={18} />
           </Link>
         </div>
-        <ProductList />
+        <ProductList products={products} />
       </div>
     </div>
   )
