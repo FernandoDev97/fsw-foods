@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { ButtonBack } from '@/app/_components/button-back'
 import { prismaClient } from '@/app/_lib/prisma'
 
+import { ProductInfos } from './_components/product-infos'
+
 interface ProductPageProps {
   params: {
     id: string
@@ -50,6 +52,9 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </span>
           </div>
           <h1 className="text-xl font-semibold">{currentProduct.name}</h1>
+        </div>
+        <div className="mt-3">
+          <ProductInfos />
         </div>
       </section>
     </div>
