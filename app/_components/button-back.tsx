@@ -9,7 +9,7 @@ export const ButtonBack = () => {
   const router = useRouter()
   return (
     <Button
-      onClick={() => router.back()}
+      onClick={() => router.replace('/')}
       className="absolute bg-gray-100 top-4 left-4 h-auto p-1 rounded-full text-center hover:bg-white"
     >
       <ChevronLeft className="text-black" />
