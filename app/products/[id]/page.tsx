@@ -16,18 +16,60 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     where: {
       id: params.id,
     },
-    include: {
-      restaurant: true,
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      price: true,
+      imageUrl: true,
+      categoryId: true,
+      discountPercentage: true,
+      restaurantId: true,
+      restaurant: {
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          deliveryFee: true,
+          deliveryTimeMinutes: true,
+        },
+      },
     },
   })
+
+  const categoryId = currentProduct?.categoryId
+  const restaurantId = currentProduct?.restaurantId
+
+  const productsInSameCategoryAndRestaurant =
+    await prismaClient.product.findMany({
+      where: {
+        categoryId,
+        restaurantId,
+      },
+      include: {
+        restaurant: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    })
 
   if (!currentProduct) {
     return notFound()
   }
   return (
     <>
-      <ProductImage product={currentProduct} />
-      <ProductInfos product={currentProduct} />
+      <ProductImage
+        imageUrl={currentProduct.imageUrl}
+        name={currentProduct.name}
+      />
+      <ProductInfos
+        productsInSameCategoryAndRestaurant={
+          productsInSameCategoryAndRestaurant
+        }
+        product={currentProduct}
+      />
     </>
   )
 }
