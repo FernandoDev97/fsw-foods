@@ -1,26 +1,18 @@
-import { Prisma } from '@prisma/client'
 import { ArrowDownIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { calculateProductTotalPrice, formatCurrency } from '../_helpers/price'
+import { RelatedProductInfo } from '../_types'
 import { Badge } from './ui/badge'
 
 interface ProductItemProps {
-  product: Prisma.ProductGetPayload<{
-    include: {
-      restaurant: {
-        select: {
-          name: true
-        }
-      }
-    }
-  }>
+  product: RelatedProductInfo
 }
 
 export const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <Link href={`/products/${product.id}`}>
+    <Link href={`/product/${product.id}`}>
       <div className="space-y-2 min-w-[150px] ">
         <div className="h-[150px] w-full relative">
           <Image
