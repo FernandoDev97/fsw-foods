@@ -1,30 +1,17 @@
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
-import { CategoryList } from './_components/category-list'
-import { Header } from './_components/header'
-import { ProductList } from './_components/product-list'
-import { PrommoBanner } from './_components/prommo-banner'
-import { RestaurantList } from './_components/restaurant-list'
-import { Search } from './_components/search'
-import { prismaClient } from './_lib/prisma'
+import { CategoryList } from '../_components/category-list'
+import { Header } from '../_components/header'
+import { ProductList } from '../_components/product-list'
+import { PrommoBanner } from '../_components/prommo-banner'
+import { RestaurantList } from '../_components/restaurant-list'
+import { Search } from '../_components/search'
+import { RelatedProductInfo } from '../_types'
+import { getProducts } from './_actions/get-products'
 
 export default async function Home() {
-  const products = await prismaClient.product.findMany({
-    where: {
-      discountPercentage: {
-        gt: 0,
-      },
-    },
-    take: 10,
-    include: {
-      restaurant: {
-        select: {
-          name: true,
-        },
-      },
-    },
-  })
+  const products: RelatedProductInfo[] = await getProducts()
   return (
     <div>
       <Header />

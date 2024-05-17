@@ -1,6 +1,5 @@
 'use client'
 
-import { Prisma } from '@prisma/client'
 import { ArrowDownIcon, Bike, Minus, Plus, TimerIcon } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -14,44 +13,17 @@ import {
   formatCurrency,
 } from '@/app/_helpers/price'
 
-interface ProductInfosProps {
-  product: Prisma.ProductGetPayload<{
-    select: {
-      id: true
-      name: true
-      description: true
-      price: true
-      imageUrl: true
-      categoryId: true
-      discountPercentage: true
-      restaurantId: true
-      restaurant: {
-        select: {
-          id: true
-          name: true
-          imageUrl: true
-          deliveryFee: true
-          deliveryTimeMinutes: true
-        }
-      }
-    }
-  }>
+import { ProductInfo, RelatedProductInfo } from '../../../_types'
 
-  productsInSameCategoryAndRestaurant: Prisma.ProductGetPayload<{
-    include: {
-      restaurant: {
-        select: {
-          name: true
-        }
-      }
-    }
-  }>[]
+export interface ProductInfosTypes {
+  product: ProductInfo
+  productsInSameCategoryAndRestaurant: RelatedProductInfo[]
 }
 
 export const ProductInfos = ({
   product,
   productsInSameCategoryAndRestaurant,
-}: ProductInfosProps) => {
+}: ProductInfosTypes) => {
   const [quantity, setQuantity] = useState(1)
 
   const handleDecreaseQuantity = () => {
