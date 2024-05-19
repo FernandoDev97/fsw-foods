@@ -40,7 +40,7 @@ export const ProductInfos = ({
   }
 
   return (
-    <section className="py-5">
+    <section className="py-5 relative z-50 mt-[-1.5rem] rounded-t-3xl bg-white">
       <div className="space-y-2 px-5">
         <div className="flex items-center gap-1">
           <Image
@@ -63,10 +63,12 @@ export const ProductInfos = ({
             <span className="font-semibold text-lg">
               R$ {formatCurrency(calculateProductTotalPrice(product))}
             </span>
-            <Badge className="space-x-1 px-1 font-semibold">
-              <ArrowDownIcon size={12} />
-              <span>{product.discountPercentage} %</span>
-            </Badge>
+            {product.discountPercentage > 0 && (
+              <Badge className="space-x-1 px-1 font-semibold">
+                <ArrowDownIcon size={12} />
+                <span>{product.discountPercentage} %</span>
+              </Badge>
+            )}
           </div>
           {product.discountPercentage > 0 && (
             <div>
@@ -132,6 +134,12 @@ export const ProductInfos = ({
       <div className="mt-8 space-y-3 pl-5">
         <h3 className="font-semibold text-xl">Outros Produtos</h3>
         <ProductList products={productsInSameCategoryAndRestaurant} />
+      </div>
+
+      <div className="mt-8 w-full px-4">
+        <Button className="w-full p-0 h-fit py-3 font-semibold text-base">
+          Adicionar à Sacola
+        </Button>
       </div>
     </section>
   )
