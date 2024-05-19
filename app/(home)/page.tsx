@@ -31,10 +31,12 @@ export default async function Home() {
 
       <div className="mt-6 pl-5 space-y-4">
         <div className="w-full flex justify-between pr-5">
-          <h2 className="text-xl font-semibold">Pedidos recomendados</h2>
+          <h2 className="text-lg sm:text-xl font-semibold">
+            Pedidos recomendados
+          </h2>
           <Link
             href="/"
-            className="flex items-center text-primary hover:text-primary/70 transition-colors"
+            className="flex text-sm sm:text-base items-center text-primary hover:text-primary/70 transition-colors"
           >
             Ver todos <ChevronRight size={18} />
           </Link>
@@ -51,10 +53,12 @@ export default async function Home() {
 
       <div className="py-6 pl-5 space-y-4">
         <div className="w-full flex justify-between pr-5">
-          <h2 className="text-xl font-semibold">Restaurantes recomendados</h2>
+          <h2 className="text-lg sm:text-xl font-semibold">
+            Restaurantes recomendados
+          </h2>
           <Link
             href="/"
-            className="flex items-center text-primary hover:text-primary/70 transition-colors"
+            className="flex text-sm sm:text-base items-center text-primary hover:text-primary/70 transition-colors"
           >
             Ver todos <ChevronRight size={18} />
           </Link>
