@@ -14,8 +14,8 @@ interface RestaurantItemProps {
 export const RestaurantItem = ({ restauant }: RestaurantItemProps) => {
   return (
     <Link href={`/restaurant/${restauant.id}`}>
-      <div className="min-w-[266px] max-w-[266px] space-y-3">
-        <div className="wfull relative h-[136px] ">
+      <div className="w-full h-full space-y-3">
+        <div className="w-full relative h-[136px] ">
           <Image
             src={restauant.imageUrl}
             fill

@@ -8,7 +8,9 @@ export const RestaurantList = async () => {
   return (
     <div className="flex overflow-x-scroll gap-5 [&::-webkit-scrollbar]:hidden pr-5">
       {restaurants.map((restaurant) => (
-        <RestaurantItem restauant={restaurant} key={restaurant.id} />
+        <div className="min-w-[266px] max-w-[266px]">
+          <RestaurantItem restauant={restaurant} key={restaurant.id} />
+        </div>
       ))}
     </div>
   )
