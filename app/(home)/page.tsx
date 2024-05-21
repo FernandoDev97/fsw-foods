@@ -35,7 +35,7 @@ export default async function Home() {
             Pedidos recomendados
           </h2>
           <Link
-            href="/"
+            href="/product/recommended"
             className="flex text-sm sm:text-base items-center text-primary hover:text-primary/70 transition-colors"
           >
             Ver todos <ChevronRight size={18} />
@@ -57,7 +57,7 @@ export default async function Home() {
             Restaurantes recomendados
           </h2>
           <Link
-            href="/"
+            href="/restaurant/recommended"
             className="flex text-sm sm:text-base items-center text-primary hover:text-primary/70 transition-colors"
           >
             Ver todos <ChevronRight size={18} />
