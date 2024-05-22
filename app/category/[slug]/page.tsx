@@ -2,14 +2,19 @@ import { Header } from '@/app/_components/header'
 import { ProductItem } from '@/app/_components/product-item'
 import { prismaClient } from '@/app/_lib/prisma'
 
-const RestauratsRecommendeds = async () => {
+interface CategoryPageProps {
+  params: {
+    slug: string
+  }
+}
+
+const CategoryPage = async ({ params }: CategoryPageProps) => {
   const products = await prismaClient.product.findMany({
     where: {
-      discountPercentage: {
-        gt: 0,
+      category: {
+        name: params.slug,
       },
     },
-    take: 30,
     include: {
       restaurant: {
         select: {
@@ -33,4 +38,4 @@ const RestauratsRecommendeds = async () => {
   )
 }
 
-export default RestauratsRecommendeds
+export default CategoryPage
