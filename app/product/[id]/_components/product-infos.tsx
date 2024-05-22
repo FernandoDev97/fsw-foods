@@ -2,6 +2,7 @@
 
 import { ArrowDownIcon, Bike, Minus, Plus, TimerIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 import { ProductList } from '@/app/_components/product-list'
@@ -51,9 +52,12 @@ export const ProductInfos = ({
             className="w-6 h-6 rounded-full"
             sizes="100vh"
           />
-          <span className="text-muted-foreground font-normal text-sm">
+          <Link
+            href={`/restaurant/${product.restaurant.id}`}
+            className="text-muted-foreground font-normal text-sm hover:underline"
+          >
             {product.restaurant.name}
-          </span>
+          </Link>
         </div>
         <h1 className="text-xl font-semibold">{product.name}</h1>
       </div>
