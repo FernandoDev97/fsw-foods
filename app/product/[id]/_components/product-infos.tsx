@@ -1,13 +1,11 @@
 'use client'
 
-import { ArrowDownIcon, Bike, Minus, Plus, TimerIcon } from 'lucide-react'
+import { ArrowDownIcon, Bike, TimerIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 
 import { ProductList } from '@/app/_components/product-list'
 import { Badge } from '@/app/_components/ui/badge'
-import { Button } from '@/app/_components/ui/button'
 import { Card, CardContent } from '@/app/_components/ui/card'
 import {
   calculateProductTotalPrice,
@@ -15,6 +13,8 @@ import {
 } from '@/app/_helpers/price'
 
 import { ProductInfo, RelatedProductInfo } from '../../../_types'
+import { BagProducts } from './bag-products'
+import { ButtonsQuantityProduct } from './buttons-quantity-product'
 
 export interface ProductInfosTypes {
   product: ProductInfo
@@ -25,17 +25,6 @@ export const ProductInfos = ({
   product,
   productsInSameCategoryAndRestaurant,
 }: ProductInfosTypes) => {
-  const [quantity, setQuantity] = useState(1)
-
-  const handleDecreaseQuantity = () => {
-    if (quantity <= 1) return
-    setQuantity((state) => state - 1)
-  }
-
-  const handleIncreaseQuantity = () => {
-    setQuantity((state) => state + 1)
-  }
-
   if (!product) {
     return
   }
@@ -83,24 +72,7 @@ export const ProductInfos = ({
           )}
         </div>
 
-        <div className="flex items-center ">
-          <Button
-            variant="outline"
-            size="icon"
-            className="border-gray-300 bg-transparent h-fit p-2"
-            onClick={handleDecreaseQuantity}
-          >
-            <Minus size={22} />
-          </Button>
-          <span className="w-[1.75rem] text-center text-sm">{quantity}</span>
-          <Button
-            onClick={handleIncreaseQuantity}
-            size="icon"
-            className="border h-fit p-2"
-          >
-            <Plus size={22} />
-          </Button>
-        </div>
+        <ButtonsQuantityProduct />
       </div>
       <div className="px-5">
         <Card className="mt-8 rounded-md">
@@ -141,9 +113,7 @@ export const ProductInfos = ({
       </div>
 
       <div className="mt-8 w-full px-4">
-        <Button className="w-full p-0 h-fit py-3 font-semibold text-base">
-          Adicionar à Sacola
-        </Button>
+        <BagProducts product={product} />
       </div>
     </section>
   )
