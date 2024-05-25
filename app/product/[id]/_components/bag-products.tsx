@@ -16,9 +16,13 @@ import {
 } from '@/app/_helpers/price'
 
 import { ButtonsQuantityProduct } from './buttons-quantity-product'
-import { ProductInfosTypes } from './product-infos'
+import { ProductInfo } from '@/app/_types'
 
-export const BagProducts = ({ product }: ProductInfosTypes) => {
+interface BagProductsProps {
+  product: ProductInfo
+}
+
+export const BagProducts = ({ product }: BagProductsProps) => {
   function calculateDiscount(
     price: number,
     percentageDiscount: number,
