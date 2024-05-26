@@ -11,7 +11,13 @@ export const ProductImage = ({ imageUrl, name }: ProductImageProps) => {
   return (
     <div className="w-full h-full">
       <div className="relative w-full h-[332px] z-10">
-        <Image src={imageUrl} alt={name} fill className="object-cover" />
+        <Image
+          src={imageUrl}
+          alt={name}
+          fill
+          className="object-cover"
+          priority={true}
+        />
         <ButtonBack />
       </div>
     </div>

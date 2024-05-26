@@ -17,6 +17,7 @@ export const CategoryItem = ({ category }: CategoryItemProps) => {
         height={30}
         src={category.imageUrl}
         alt={category.name}
+        className="w-auto h-auto"
       />
       <span className="font-semibold text-sm">{category.name}</span>
     </Link>

@@ -11,8 +11,8 @@ export const Header = () => {
         height={30}
         width={100}
         src="/Logo.png"
-        sizes="100vh"
         alt="FSW Foods"
+        className="w-auto h-auto"
       />
       <Button
         size="icon"

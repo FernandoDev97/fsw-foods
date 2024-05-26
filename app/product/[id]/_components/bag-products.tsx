@@ -14,9 +14,9 @@ import {
   calculateProductTotalPrice,
   formatCurrency,
 } from '@/app/_helpers/price'
+import { ProductInfo } from '@/app/_types'
 
 import { ButtonsQuantityProduct } from './buttons-quantity-product'
-import { ProductInfo } from '@/app/_types'
 
 interface BagProductsProps {
   product: ProductInfo
@@ -109,18 +109,20 @@ export const BagProducts = ({ product }: BagProductsProps) => {
                 </span>
               </div>
 
-              <div className="w-full flex justify-between pb-2 border-b">
-                <span className="text-base text-gray-400">Descontos</span>
-                <span className="text-sm">
-                  - R${' '}
-                  {formatCurrency(
-                    calculateDiscount(
-                      Number(product.price),
-                      product.discountPercentage,
-                    ),
-                  )}
-                </span>
-              </div>
+              {product.discountPercentage > 0 && (
+                <div className="w-full flex justify-between pb-2 border-b">
+                  <span className="text-base text-gray-400">Descontos</span>
+                  <span className="text-sm">
+                    - R${' '}
+                    {formatCurrency(
+                      calculateDiscount(
+                        Number(product.price),
+                        product.discountPercentage,
+                      ),
+                    )}
+                  </span>
+                </div>
+              )}
             </CardContent>
           </Card>
           <Button className="w-ful text-lg font-semibold">

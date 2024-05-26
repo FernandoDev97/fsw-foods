@@ -20,6 +20,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
             alt={product.name}
             fill
             className="object-cover rounded-lg shadow-md"
+            sizes="100vh"
           />
           {product.discountPercentage && (
             <div className="absolute top-2 left-2">
