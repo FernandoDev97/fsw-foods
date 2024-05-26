@@ -11,7 +11,13 @@ export const RestaurantImage = ({ imageUrl, alt }: RestaurantImageProps) => {
   return (
     <div className="w-full h-full">
       <div className="relative w-full h-[250px]">
-        <Image src={imageUrl} alt={alt} fill className="object-cover" />
+        <Image
+          src={imageUrl}
+          alt={alt}
+          fill
+          className="object-cover"
+          priority={true}
+        />
         <ButtonBack />
       </div>
     </div>

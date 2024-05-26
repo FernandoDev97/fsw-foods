@@ -19,6 +19,7 @@ export const RestaurantItem = ({ restauant }: RestaurantItemProps) => {
           <Image
             src={restauant.imageUrl}
             fill
+            sizes="100vh"
             className="object-cover rounded-lg"
             alt={restauant.name}
           />
